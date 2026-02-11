@@ -139,3 +139,84 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
 #btn-no.fixed {
     position: fixed;
 }
+/* TELESCOPIO EN EL ESCENARIO */
+#telescope {
+    bottom: 200px;
+    right: 25%; /* A la derecha del centro */
+    z-index: 10;
+    position: absolute;
+    animation: float-film 5s ease-in-out infinite alternate-reverse;
+}
+
+/* --- MEJORAS DEL TELESCOPIO --- */
+
+/* LENTE DEL TELESCOPIO (FONDO) */
+#constellation-area {
+    position: relative;
+    width: 320px;       /* Un poco más grande */
+    height: 320px;
+    margin: 20px auto;
+    
+    /* Fondo espacial profundo */
+    background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+    
+    border-radius: 50%; /* Lente redonda */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        inset 0 0 50px rgba(0,0,0,0.8), /* Sombra interior (profundidad) */
+        0 0 20px rgba(255, 77, 109, 0.2); /* Resplandor exterior */
+    
+    overflow: hidden; /* Para que nada se salga del círculo */
+}
+
+/* EL SVG DONDE DIBUJAMOS LAS LÍNEAS */
+#constellation-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; /* Debajo de las estrellas */
+    pointer-events: none; /* Para que no moleste al clic */
+}
+
+/* LÍNEAS CONECTIVAS (Se crean con JS) */
+.constellation-line {
+    stroke: #ff4d6d;      /* Color rosa */
+    stroke-width: 2px;
+    stroke-dasharray: 1000; /* Truco para animar el trazo */
+    stroke-dashoffset: 1000;
+    animation: drawLine 1s forwards;
+    filter: drop-shadow(0 0 5px #ff4d6d);
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ESTRELLAS */
+.star-game {
+    position: absolute;
+    width: 24px; height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    
+    /* Centrar texto */
+    display: flex; justify-content: center; align-items: center;
+    font-size: 12px; font-weight: bold; color: #1a1a2e;
+    
+    cursor: pointer;
+    transform: translate(-50%, -50%); /* Centrado perfecto en su coordenada */
+    z-index: 2; /* Encima de las líneas */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* EFECTOS DE ESTADO */
+.star-game:hover { transform: translate(-50%, -50%) scale(1.3); }
+
+.star-game.active {
+    background: #ff4d6d;
+    color: white;
+    box-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d; /* Mucho brillo */
+    transform: translate(-50%, -50%) scale(1.2);
+}

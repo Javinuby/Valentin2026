@@ -23,6 +23,10 @@
             <div class="hud-item" id="hud-cabra" title="Cabra Espacial">
                 🐐
             </div>
+            <div id="telescope" class="clickable" onclick="startTelescopeGame()">
+                <span style="font-size: 50px;">🔭</span> 
+            </div>
+            <div class="hud-item" id="hud-telescopio" title="Constelación">🔭</div>
         </div>
         <div id="stars"></div>
         
@@ -42,6 +46,10 @@
             <img src="assets/cabra.png" alt="Cabra Espacial"> 
         </div>
 
+        <div id="telescope" class="clickable" onclick="startTelescopeGame()">
+            <span style="font-size: 60px;">🔭</span> 
+        </div>
+
         <div id="message-box"></div>
 
         <div id="final-modal" class="modal">
@@ -56,6 +64,28 @@
         
         </div> 
         
+    </div>
+
+    <div id="telescope-modal" class="modal">
+        <span class="close-btn" onclick="closeTelescope()">&times;</span>
+        <h2>✨ Dibuja en las estrellas ✨</h2>
+        <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 15px;">Une los puntos en orden (1 → 6)</p>
+        
+        <div id="constellation-area">
+            <svg id="constellation-svg" width="100%" height="100%"></svg>
+    
+            <div class="star-game" data-index="1" onclick="clickStar(1, this)" style="top: 85%; left: 50%;">1</div>
+            
+            <div class="star-game" data-index="2" onclick="clickStar(2, this)" style="top: 55%; left: 20%;">2</div>
+            
+            <div class="star-game" data-index="3" onclick="clickStar(3, this)" style="top: 25%; left: 25%;">3</div>
+            
+            <div class="star-game" data-index="4" onclick="clickStar(4, this)" style="top: 35%; left: 50%;">4</div>
+            
+            <div class="star-game" data-index="5" onclick="clickStar(5, this)" style="top: 25%; left: 75%;">5</div>
+            
+            <div class="star-game" data-index="6" onclick="clickStar(6, this)" style="top: 55%; left: 80%;">6</div>
+        </div>
     </div>
 
     <div id="gallery-modal" class="modal">
@@ -73,6 +103,6 @@
     </div>
 
     <script src="js/main.js"></script>    <script src="js/gallery.js"></script> <script src="js/memory.js"></script>  
-    <script src="js/goat.js"></script>
+    <script src="js/goat.js"></script>      <script src="js/telescope.js"></script>
 </body>
 </html>

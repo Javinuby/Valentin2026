@@ -1,5 +1,5 @@
 // ESTADO DEL JUEGO
-let inventory = { gato: false, peli: false, cabra: false };
+let inventory = { gato: false, peli: false, cabra: false, telescopio: false };
 
 // GENERAR ESTRELLAS
 const starsContainer = document.getElementById('stars');
@@ -52,6 +52,7 @@ function found(item) {
     } 
     else if(item === 'peli') box.innerText = "¡Un recuerdo de cine desbloqueado! 🎬";
     else if(item === 'cabra') box.innerText = "La cabra espacial ha balado de alegría 🐐";
+    else if(item === 'telescopio') box.innerText = "Has descubierto la constelación del amor ✨";
 
     checkWin();
 }

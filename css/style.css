@@ -129,3 +129,13 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
     position: fixed; /* Se libera del modal y usa toda la pantalla */
     z-index: 200;    /* Por encima incluso del modal */
 }
+
+#btn-no {
+    /* Transición rápida para que se vea el movimiento pero no sea lento */
+    transition: top 0.2s ease, left 0.2s ease, background-color 0.3s;
+}
+
+/* Cuando se pone en modo "loco" */
+#btn-no.fixed {
+    position: fixed;
+}

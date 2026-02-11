@@ -91,35 +91,56 @@ document.body.addEventListener('click', function() {
 
 // --- LÓGICA DEL FINAL EPICO ---
 
+// --- LÓGICA DEL FINAL EPICO (VERSIÓN MEJORADA) ---
+
 function moveNoButton() {
     const btnNo = document.getElementById('btn-no');
     
-    // Frases para convencerla cuando intente decir que no
+    // --- TRUCO DE INGENIERO ---
+    // Si el botón sigue dentro del modal, lo sacamos y lo ponemos en el body
+    // para que las coordenadas funcionen bien respecto a la pantalla.
+    if (btnNo.parentNode !== document.body) {
+        document.body.appendChild(btnNo);
+    }
+    // ---------------------------
+
     const messages = [
-        "¿Segura?", 
-        "¡Piénsalo bien!", 
-        "¡Error 404: No encontrado!", 
-        "Venga ya...", 
-        "¡Que no te dejo!", 
-        "Inténtalo otra vez",
+        "¿Seguro?", 
+        "¡Es tu última oportunidad!", 
+        "¡Error! Opción no válida", 
+        "Venga, no seas así...", 
+        "¡Que te equivocas de botón!", 
+        "Inténtalo otra vez 😜",
         "¿Me vas a romper el corazón? 💔",
-        "¡Ese botón está prohibido!"
+        "¡Ese botón muerde!",
+        "La respuesta correcta es la otra 👉"
     ];
 
-    // 1. Convertir a posición fija para que se mueva por TODA la pantalla
-    btnNo.classList.add('moving');
+    // Aseguramos que sea fixed
+    btnNo.style.position = 'fixed';
+    btnNo.style.zIndex = '1000'; 
 
-    // 2. Calcular nueva posición aleatoria (respetando márgenes para que no se salga)
-    const newX = Math.random() * (window.innerWidth - 100);
-    const newY = Math.random() * (window.innerHeight - 50);
+    // Calculamos límites (restando el tamaño del botón para que no se corte)
+    const maxX = window.innerWidth - btnNo.clientWidth - 20;
+    const maxY = window.innerHeight - btnNo.clientHeight - 20;
 
-    // 3. Aplicar coordenadas
-    btnNo.style.left = newX + 'px';
-    btnNo.style.top = newY + 'px';
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
 
-    // 4. Cambiar el texto aleatoriamente
+    // Aplicamos coordenadas
+    btnNo.style.left = Math.max(0, newX) + 'px';
+    btnNo.style.top = Math.max(0, newY) + 'px';
+
+    // Texto y color
     const randomMsg = messages[Math.floor(Math.random() * messages.length)];
     btnNo.innerText = randomMsg;
+    btnNo.style.backgroundColor = '#ff0000'; 
+    btnNo.style.color = 'white';
+}
+
+function acceptValentine() {
+    alert("¡SABÍA QUE DIRÍAS QUE SÍ! ❤️ Te quiero.");
+    // Aquí podrías redirigir a una canción o mostrar fuegos artificiales
 }
 
 function acceptValentine() {

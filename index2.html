@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Misión Lunar: San Valentín</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/memory.css">
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="assets/Heaven.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="game-container">
+        <div id="stars"></div>
+        
+        <div class="moon-floor">
+            <div class="crater" style="width: 80px; height: 30px; top: 40px; left: 20%;"></div>
+            <div class="crater" style="width: 40px; height: 15px; top: 80px; left: 60%;"></div>
+            <div class="crater" style="width: 120px; height: 40px; top: 20px; right: 15%;"></div>
+        </div>
+
+        <div id="cat" class="character" onclick="startMemoryGame()"></div>
+
+        <div id="film" class="clickable" onclick="openGallery()">
+            <img src="assets/film.png" alt="Recuerdos">
+        </div>
+
+        <div id="goat" onclick="found('cabra')">
+            <img src="assets/cabra.png" alt="Cabra Espacial"> 
+        </div>
+
+        <div id="message-box"></div>
+
+        <div id="final-modal" class="modal">
+            <h1 id="constellation-text"></h1>
+            <p>Has encontrado todos los recuerdos bajo la luna...</p>
+            <button onclick="alert('¡SÍ! ❤️')" class="btn-final">¿Quieres ser mi San Valentín?</button>
+        </div>
+    </div>
+
+    <div id="gallery-modal" class="modal">
+        <span class="close-btn" onclick="closeGallery()">&times;</span>
+        <img id="current-photo" src="" alt="Foto nuestra">
+        <p id="photo-caption"></p>
+        <button onclick="nextPhoto()" class="btn-next">Siguiente Foto ➡️</button>
+    </div>
+
+    <div id="memory-modal" class="modal">
+        <h2>🧩 Encuentra las parejas</h2>
+        <div id="memory-grid"></div>
+        <p id="memory-status">Intentos: 0</p>
+        <button class="close-btn" onclick="closeMemory()">&times;</button>
+    </div>
+
+    <script src="js/main.js"></script>    <script src="js/gallery.js"></script> <script src="js/memory.js"></script>  </body>
+</html>

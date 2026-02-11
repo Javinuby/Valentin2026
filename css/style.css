@@ -220,3 +220,80 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
     box-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d; /* Mucho brillo */
     transform: translate(-50%, -50%) scale(1.2);
 }
+
+/* --- VERSIÓN MÓVIL (RESPONSIVE) --- */
+@media (max-width: 768px) {
+
+    /* 1. Bloquear Scroll y ajustar altura real */
+    body, html {
+        position: fixed; /* Congela la pantalla */
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        touch-action: none; /* Desactiva gestos del navegador */
+    }
+
+    #game-container {
+        width: 100vw;
+        height: 100dvh; /* dvh se adapta mejor a las barras del móvil */
+    }
+
+    /* 2. Hacer todo GIGANTE para que se vea bien */
+    
+    /* GATO */
+    #cat {
+        transform: scale(6); /* Antes era 4, ahora más grande */
+        bottom: 180px; /* Un poco más abajo para que no tape */
+        left: 10%;
+    }
+
+    /* CARRETE DE CINE */
+    #film {
+        width: 100px; /* Más grande */
+        bottom: 180px;
+    }
+
+    /* TELESCOPIO */
+    #telescope {
+        bottom: 200px;
+        right: 10%; 
+        transform: scale(1.5); /* 50% más grande */
+    }
+
+    /* 3. ARREGLO DE LA CABRA (HITBOX) */
+    #goat {
+        width: 120px; /* Mucho más visible */
+        
+        /* TRUCO DE INGENIERO: Aumentar el área de toque sin deformar la imagen */
+        padding: 40px; 
+        margin: -40px; /* Compensa el padding */
+        
+        /* Hacemos que se mueva un pelín más lento en móvil para facilitar la caza */
+        transition: top 0.7s ease, left 0.7s ease !important; 
+    }
+
+    /* 4. Ajustar textos y modales */
+    #message-box {
+        font-size: 1.2rem;
+        width: 90%;
+        left: 5%;
+        top: 15%; /* Más arriba para no molestar */
+    }
+
+    .modal {
+        width: 85%; /* Que ocupe casi toda la pantalla */
+        padding: 20px;
+    }
+
+    /* Estrellas del telescopio más separadas */
+    .star-game {
+        width: 40px; /* Puntos más gordos */
+        height: 40px;
+    }
+    
+    /* Botones finales más fáciles de pulsar */
+    .btn-final {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+}

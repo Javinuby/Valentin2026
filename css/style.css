@@ -29,7 +29,7 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
     transform: scale(4); 
     image-rendering: pixelated;
     position: absolute; bottom: 200px; left: 20%; z-index: 10; cursor: pointer;
-    background-image: url('../assets/cat_sprite.png'); /* RUTA CORREGIDA */
+    background-image: url('../assets/CatSprite.png'); /* RUTA CORREGIDA */
     background-repeat: no-repeat;
     animation: cat-anim 0.8s steps(4) infinite;
 }
@@ -49,9 +49,14 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
     33% { transform: translate(-30vw, 100px) rotate(-10deg); }
     66% { transform: translate(-60vw, -50px) rotate(15deg); }
     100% { transform: translate(-80vw, 50px) rotate(-5deg); }
+    
+}
+/* En css/style.css */
+#goat:active {
+    transform: scale(0.9); /* Efecto de pulsar */
 }
 
-#film { bottom: 200px; left: 50%; width: 50px; z-index: 10; position: absolute; }
+#film { bottom: 200px; left: 50%; width: 100px; z-index: 10; position: absolute; }
 #film img { width: 100%; }
 
 /* UI GENÉRICA */
@@ -65,4 +70,62 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
 }
 .close-btn { position: absolute; top: 10px; right: 15px; font-size: 30px; cursor: pointer; color: white; background: none; border: none;}
 .btn-final, .btn-next { background:#ff4d6d; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; margin-top: 10px;}
-#current-photo { max-width: 100%; max-height: 50vh; border-radius: 10px; }
+/* Asegúrate de tener esto en tu style.css para las fotos */
+#current-photo { 
+    max-width: 100%; 
+    max-height: 60vh; /* Importante para móviles */
+    border-radius: 10px; 
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    transition: opacity 0.2s ease-in-out; /* Para el efecto de fundido */
+}
+
+/* BARRA DE INVENTARIO (HUD) */
+#hud {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Arriba a la derecha */
+    display: flex;
+    gap: 15px;
+    z-index: 50; /* Por encima de todo */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hud-item {
+    font-size: 2rem; /* Iconos grandes */
+    opacity: 0.3;    /* Apagados por defecto */
+    filter: grayscale(100%); /* En blanco y negro */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote suave */
+}
+
+/* CLASE QUE AÑADIREMOS CON JS CUANDO LO CONSIGA */
+.hud-item.collected {
+    opacity: 1;      /* Totalmente visible */
+    filter: grayscale(0%); /* Color original */
+    transform: scale(1.2); /* Un poco más grande */
+    text-shadow: 0 0 15px #ff4d6d; /* Brillo rosa */
+}
+
+/* CONTENEDOR DE LOS BOTONES */
+#final-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* ESTILO DEL BOTÓN "NO" */
+.btn-secondary {
+    background: #4a4a4a; /* Gris oscuro para diferenciarlo */
+    color: #ccc;
+    position: relative; /* Necesario para que el cambio a 'fixed' funcione bien */
+    transition: all 0.2s ease; /* Para que se mueva suave pero rápido */
+}
+
+/* CUANDO SE VUELVE LOCO (CLASE QUE AÑADIREMOS) */
+.btn-secondary.moving {
+    position: fixed; /* Se libera del modal y usa toda la pantalla */
+    z-index: 200;    /* Por encima incluso del modal */
+}

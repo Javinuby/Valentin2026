@@ -1,6 +1,13 @@
-body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%); overflow: hidden; font-family: 'Courier New', Courier, monospace; color: white; }
+body { margin: 0; overflow: hidden; font-family: 'Courier New', Courier, monospace; color: white; }
 
-#game-container { position: relative; width: 100vw; height: 100vh; }
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    /* MUEVE AQUÍ EL FONDO: */
+    background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
+}
 
 /* ESTRELLAS */
 .star { position: absolute; background: white; border-radius: 50%; opacity: 0.8; animation: twinkle 2s infinite; }
@@ -242,7 +249,7 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
     
     /* GATO */
     #cat {
-        transform: scale(6); /* Antes era 4, ahora más grande */
+        transform: scale(4.5); /* Antes era 4, ahora más grande */
         bottom: 180px; /* Un poco más abajo para que no tape */
         left: 10%;
     }
@@ -262,7 +269,7 @@ body { margin: 0; background: radial-gradient(circle, #1b2735 0%, #090a0f 100%);
 
     /* 3. ARREGLO DE LA CABRA (HITBOX) */
     #goat {
-        width: 120px; /* Mucho más visible */
+        width: 100px; /* Mucho más visible */
         
         /* TRUCO DE INGENIERO: Aumentar el área de toque sin deformar la imagen */
         padding: 40px; 
